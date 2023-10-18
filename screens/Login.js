@@ -9,9 +9,9 @@ import * as Yup from 'yup'
 import { Fragment } from 'react'
 import ErrorMessage from '../components/ErrorMessage'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
-import { Link } from 'expo-router'
 import { Header } from '@rneui/themed'
-import { router, useRouter } from 'expo-router'
+import { NavigationContainer } from '@react-navigation/native'
+import Questionnaire from './Questionnaire'
 
 
 export default function Login({ navigation }) {
@@ -19,7 +19,6 @@ export default function Login({ navigation }) {
     const insets= useSafeAreaInsets();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const router = useRouter();
 
     const handleSubmit = (values, { navigation }) => {
         if (values.email.length > 0 && values.password.length > 0) {
@@ -43,12 +42,6 @@ export default function Login({ navigation }) {
 
     return (
         <View style={[styles.container, {backgroundColor: theme.colors.background, flex: 1, paddingTop: insets.top}]}>
-    <Header
-     placement="left"
-     backgroundColor={theme.colors.card}
-     borderColor='none'
-     centerComponent={{ text: 'Login', style: { color: theme.colors.text, fontSize: 24, fontWeight: 'bold'} } }
-    />
         <Formik
           initialValues={{ email: '', password: '' }}
           onSubmit={values => handleSubmit(values, { navigation })}
@@ -102,19 +95,14 @@ export default function Login({ navigation }) {
             type="clear"
             />
 
-          <Link href='/Questionnaire' asChild>
-            <Pressable style={styles.button}>
-              <Text style= {{color: theme.colors.tertiary}}>Continue as Guest</Text>
-              </Pressable>
-          </Link>
-          {/* <Button
+          <Button
             title="Continue as Guest"
-            onPress={() => router.push('/Questionnaire')}
+            onPress={() => navigation.navigate('Questionnaire')}
             titleStyle={{
               color: theme.colors.tertiary
             }}
             type="clear"
-            /> */}
+            />
         </View>
           </Fragment> 
             )}
@@ -130,12 +118,12 @@ export default function Login({ navigation }) {
     button: {
       margin: 8,
       alignItems: 'center',
-      font: 
-      {
-        fontSize: 20,
-        fontWeight: 'bold',
+      // font: 
+      // {
+      //   fontSize: 20,
+      //   fontWeight: 'bold',
 
-      },
+      // },
 
     },
   })

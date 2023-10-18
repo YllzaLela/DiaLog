@@ -20,7 +20,6 @@ import { Fragment } from "react";
 import FormInput from "../components/FormInput";
 import ErrorMessage from "../components/ErrorMessage";
 import FormButton from "../components/FormButton";
-import { Link } from "expo-router";
 import RadioGroup from "../components/RadioGroup";
 import { Header } from "react-native-elements";
 import { CheckBox, Card, Text } from '@rneui/themed';
@@ -48,12 +47,6 @@ export default function Questionnaire({ navigation }) {
 
   return (
     <ScrollView style={[styles.container, {backgroundColor: theme.colors.background, flex: 1, paddingTop: insets.top}]}>
-    <Header
-     placement="left"
-     backgroundColor={theme.colors.card}
-     borderColor= {theme.colors.card}
-     centerComponent={{ text: 'Questionnaire', style: { color: theme.colors.text, fontSize: 24, fontWeight: 'bold'} } }
-    />
     <Formik
       initialValues={{ name: '', age:0 }}
       onSubmit={values => handleSubmit(values, { navigation })}
@@ -135,13 +128,11 @@ export default function Questionnaire({ navigation }) {
 
       {/*Skip Button*/}
       <View style={ [styles.buttonContainer, {margin: theme.spacing.medium},]}>
-      <Link href="/" asChild>
       <FormButton
           onPress={handleSubmit}
           title="Skip"
           backgroundColor={theme.colors.tertiary}
           buttonColor={theme.colors.textContrast}/>
-      </Link>
       </View>
       </Fragment> 
         )}
