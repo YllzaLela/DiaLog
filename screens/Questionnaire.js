@@ -55,7 +55,11 @@ const validationSchema = Yup.object().shape({
   .required('Please select one that describes you best'),
   
   activityLevel: Yup.string()
-  .oneOf (['1', '2', '3', '4', '5'], 'Please select one that describes you best')
+  .oneOf (['1.2',' 1.3', '1.5', '1.7', '1.9'], 'Please select one that describes you best')
+  .required('Please select one that describes you best'),
+
+  goal: Yup.string()
+  .oneOf (['Lose', 'Gain', 'Maintain'], 'Please select one that describes you best')
   .required('Please select one that describes you best'),
   
 });
@@ -70,7 +74,8 @@ export default function Questionnaire({ navigation }) {
   const [weight, setWeight]= useState(0);
   const [height, setHeight]= useState(0);
   const [diagnosis, setDiagnosis]= useState(['Type 2 Diabetes', 'Pre-Diabetes', 'Other']);
-  const [activityLevel, setActivityLevel]= useState(['1', '2', '3', '4', '5']);
+  const [activityLevel, setActivityLevel]= useState(['1.2',' 1.3', '1.5', '1.7', '1.9']);
+  const [goal, setGoal]= useState(['Lose', 'Gain', 'Maintain']);
   
   const handleSubmit = ( values ) => 
   {
@@ -82,7 +87,7 @@ export default function Questionnaire({ navigation }) {
   return (
     <ScrollView style={[styles.container, {backgroundColor: theme.colors.background, flex: 1, paddingTop: insets.top}]}>
     <Formik
-      initialValues={{ name: '', age:null, gender: '', weight:null, height:null, diagnosis: '', activityLevel: '' }}
+      initialValues={{ name: '', age:'', gender: '', weight:'', height:'', diagnosis: '', activityLevel: '', goal: '' }}
       onSubmit={values => handleSubmit(values)}
       validationSchema={validationSchema}
     > 
@@ -103,7 +108,7 @@ export default function Questionnaire({ navigation }) {
         inputStyle= {{color: theme.colors.text}}
       />
       <ErrorMessage errorValue= {touched.name && errors.name}/>
-
+      
       {/*Age*/}
       <InputLabel>
         Age
@@ -186,16 +191,29 @@ export default function Questionnaire({ navigation }) {
         <RadioGroup
         name="activityLevel"
            options={[
-            {label: 'Sedentary: Little to no exercise.', value: '1'},
-            {label: 'Lightly Active: Light exercise or sports 1-3 days a week. ', value: '2'},
-            {label: 'Moderately Active: Moderate exercise or sports 3-5 days a week.', value:'3'},
-            {label: 'Highly Active: Hard exercise or sports 6-7 days a week.', value:'4'},
-            {label: 'Extremely Active: Very hard exercise, physical job, or training twice a day.', value:'5'},
+            {label: 'Sedentary: Little to no exercise.', value: '1.2'},
+            {label: 'Lightly Active: Light exercise or sports 1-3 days a week. ', value: '1.3'},
+            {label: 'Moderately Active: Moderate exercise or sports 3-5 days a week.', value:'1.5'},
+            {label: 'Highly Active: Hard exercise or sports 6-7 days a week.', value:'1.7'},
+            {label: 'Extremely Active: Very hard exercise, physical job, or training twice a day.', value:'1.9'},
           ]}
-          value={values.activityLevel}
           selectedValue={values.activityLevel}
           onValueChange={handleChange('activityLevel')}/>
           <ErrorMessage errorValue={touched.activityLevel && errors.activityLevel}/>
+
+          {/*Goal*/}
+          <InputLabel>What is your goal? </InputLabel>
+        <RadioGroup
+        name="goal"
+            options={[
+            {label: 'Lose Weight', value: 'Lose'},
+            {label: 'Maintain Weight', value:'Maintain'},
+            {label: 'Gain Weight', value: 'Gain'},
+          ]}
+          value={values.goal}
+          selectedValue={values.goal}
+          onValueChange={handleChange('goal')}/>
+          <ErrorMessage errorValue={touched.goal && errors.goal}/>
 
           {/*Submit Button*/}
       <View style={[styles.buttonContainer, {margin: theme.spacing.medium}]}>
