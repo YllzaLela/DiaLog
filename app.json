@@ -6,7 +6,6 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
-    "scheme": "manage-diabetes-app",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -26,10 +25,6 @@
     },
     "web": {
       "favicon": "./assets/favicon.png",
-      "bundler": "metro"
     },
-    "plugins": [
-      "expo-router"
-    ]
   },
 }

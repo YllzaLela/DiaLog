@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { StyleSheet, SafeAreaView, View, Text } from 'react-native'
+import { StyleSheet, SafeAreaView, View, Text, Pressable } from 'react-native'
 import { Button } from 'react-native-elements'
 import FormInput from '../components/FormInput'
 import FormButton from '../components/FormButton'
@@ -9,12 +9,14 @@ import * as Yup from 'yup'
 import { Fragment } from 'react'
 import ErrorMessage from '../components/ErrorMessage'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
-import { Link } from 'expo-router'
+import { Header } from '@rneui/themed'
+import { NavigationContainer } from '@react-navigation/native'
+import Questionnaire from './Questionnaire'
+
 
 export default function Login({ navigation }) {
 
     const insets= useSafeAreaInsets();
-
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -47,7 +49,8 @@ export default function Login({ navigation }) {
         > 
 
        {({ handleChange, values, handleSubmit, errors, isValid, isSubmitting, touched, handleBlur }) => (
-        <Fragment>   
+        <Fragment> 
+
           <FormInput
             name="email"
             value={values.email}
@@ -73,24 +76,25 @@ export default function Login({ navigation }) {
             inputStyle= {{color: theme.colors.text}}
           />
          <ErrorMessage errorValue= {touched.password && errors.password}/>
-          <View style={[styles.buttonContainer, {margin: theme.spacing.medium}]}>
+        
+        <View style={{margin: theme.spacing.medium}}>
             <FormButton
-              onPress={handleSubmit}
+              //onPress={handleSubmit}
               title="LOGIN"
               titleColor={theme.colors.primary}
+              backgroundColor={theme.colors.primary}
               disabled={ !isValid || isSubmitting}
-
             />
-          </View>
+
           <Button
             title="Don't have an account? Sign Up"
-            onPress={() => navigation.navigate('Signup')}
+            //onPress={() => router.navigate('Signup')}
             titleStyle={{
               color: theme.colors.secondary
             }}
             type="clear"
-          />
-          <Link href="/Questionnaire" asChild>
+            />
+
           <Button
             title="Continue as Guest"
             onPress={() => navigation.navigate('Questionnaire')}
@@ -98,8 +102,8 @@ export default function Login({ navigation }) {
               color: theme.colors.tertiary
             }}
             type="clear"
-          />
-          </Link>
+            />
+        </View>
           </Fragment> 
             )}
           </Formik>
@@ -110,5 +114,16 @@ export default function Login({ navigation }) {
   const styles = StyleSheet.create({
     container: {
       flex: 1
+    },
+    button: {
+      margin: 8,
+      alignItems: 'center',
+      // font: 
+      // {
+      //   fontSize: 20,
+      //   fontWeight: 'bold',
+
+      // },
+
     },
   })
