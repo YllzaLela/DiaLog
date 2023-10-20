@@ -8,7 +8,7 @@ export default function RadioGroup({ options, selectedValue, onValueChange }) {
 
     const styles = StyleSheet.create({
         container: {
-            borderRadius: 10,
+            marginLeft: 5,
         },
         title: {
             fontWeight: 'bold',
@@ -17,7 +17,7 @@ export default function RadioGroup({ options, selectedValue, onValueChange }) {
         listItem: {
             borderWidth: 0,
             padding: 0,
-            marginLeft: 20,
+            marginLeft: 0,
             backgroundColor: '',
         },
         checkBox: {

@@ -31,7 +31,7 @@ const FormInput = ({
 
 const styles = StyleSheet.create({
   inputContainer: {
-    marginLeft: 10,
+    marginLeft: 5,
     marginTop: 10,
   },
   iconStyle: {
