@@ -1,12 +1,10 @@
 import initializeapp from 'firebase/app';
 import { getAnalytics } from "firebase/analytics";
 
-//Importing the services I might want to use
-// import {...} from "firebase/auth";
-// import {...} from "firebase/database";
-// import {...} from "firebase/firestore";
-// import {...} from "firebase/functions";
-// import {...} from "firebase/storage";
+//Importing the services I will be using 
+import {getAuth} from "firebase/auth";
+import {getFirestore} from "firebase/firestore";
+import { getStorage } from "firebase/storage";
 
 
 //initialize firebase
