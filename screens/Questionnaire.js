@@ -83,8 +83,7 @@ export default function Questionnaire({ navigation }) {
   }
   
   return (
-    console.log("Questionnaire"),
-    <SafeAreaView>
+   
     <ScrollView style={[styles.container, {backgroundColor: theme.colors.background, flex: 1, paddingTop: insets.top}]}>
     <Formik
       initialValues={{ name: '', age:'', gender: '', weight:'', height:'', diagnosis: '', activityLevel: '', goal: '' }}
@@ -241,7 +240,6 @@ export default function Questionnaire({ navigation }) {
         )}
       </Formik>
     </ScrollView>
-    </SafeAreaView>
   )
 }
 
