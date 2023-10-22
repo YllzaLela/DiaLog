@@ -14,6 +14,7 @@ const ErrorMessage = ({ errorValue }) => (
         },
         errorText: {
             color: 'red',
+            fontFamily: 'Montserrat_400Regular',
         }
     });
 

@@ -7,39 +7,34 @@ export const theme = createTheme({
     colors: 
     {
         mode: 'dark',
-        primary: '#3A8DFF',      // Primary Blue 
-        secondary: '#29CC97',    // Secondary Green 
-        tertiary: '#9B5DE5',   // Purple accent
-        accent: '#FF6B6B',       // Coral Accent
-        background: '#121212',  // Dark Background
-        text: '#EAEAEA',         // Primary Text Color
+        primary: '#FF6347',      // Primary Coral-Orange
+        secondary: '#FFFFFF',    // Secondary White
+        tertiary: '#0656B2',     // Tertiary Blue
+        accent: '#FF4500',       // Accent Dark Orange
+        background: '#1A1A1A',   // Dark Background
+        text: '#FFFFFF',         // Primary Text Color
         border: '#2c3e50',       // Border color
-        card: '#1F1F1F',         // Slightly Lighter Background for Cards/Sections
-        notification: '#3A8DFF', // Purple for notifications or accent
+        card: '#242424',         // Slightly Lighter Background for Cards/Sections
+        notification: '#FF6347', // Coral-Orange for notifications or accent
         disabled: '#434343',     // Slightly brighter than background but still dim
         placeholder: '#B0B0B0',  // Placeholder Text Color
         backdrop: '#00000080',   // Black with some opacity, useful for modals/backdrops
-        onSurface: '#EAEAEA',    // Color for elements on top of a surface
+        onSurface: '#FFFFFF',    // Color for elements on top of a surface
         surface: '#2c3e50',      // Surface Color
-        error: '#FF3D71',        // Error Red
-        warning: '#FFAA00',      // Warning Orange
-        info: '#3A8DFF',         // Information Blue (can be the same as primary)
-        success: '#00D68F',      // Success Green
-        textContrast: '#121212', // Dark Text, maybe for light backgrounds or buttons
+        gray: '#7A7A7A',         // The Gray from the design
+        error: '#FF4500',        // Error Dark Orange
+        warning: '#FF8C00',      // Warning Light Orange
+        info: '#FF6347',         // Coral-Orange (similar to primary)
+        success: '#00D68F',      // Success Green from your old theme
+        textContrast: '#121212', // Dark Text
         disabledContrast: '#7A7A7A',// Disabled Text with a contrast
-        //sectionTitle: '#EAEAEA', // Section Title Color 
     },
     fonts: 
     {
-        regular: {
-            fontFamily: 'System',
-            fontWeight: '400',
-        },
-        bold: {
-            fontFamily: 'System',
-            fontWeight: '700',
-        },
+        regular: 'Montserrat_400Regular',
+        bold: 'Montserrat_700Bold',
         sizes: {
+            tiny: 8,
             small: 12,
             medium: 16,
             large: 20,

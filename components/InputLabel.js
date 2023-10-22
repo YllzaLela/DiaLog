@@ -12,9 +12,10 @@ const InputLabel = ({ children, style }) => {
 
 const styles = StyleSheet.create({
     text: {
+        fontFamily: theme.fonts.bold,
         fontSize: theme.fonts.sizes.medium,
         fontWeight: 'bold',
-        textAlign: 'Left',
+        textAlign: 'left',
         marginTop: 20,
         marginLeft: 20,
         color: theme.colors.text,

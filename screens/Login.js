@@ -10,7 +10,6 @@ import { Fragment } from 'react'
 import ErrorMessage from '../components/ErrorMessage'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { Header } from '@rneui/themed'
-import { NavigationContainer } from '@react-navigation/native'
 import Questionnaire from './Questionnaire'
 
 
@@ -60,7 +59,7 @@ export default function Login({ navigation }) {
             iconName="ios-mail"
             iconColor={theme.colors.tertiary}
             onBlur={handleBlur('email')}
-            inputStyle= {{color: theme.colors.text}}
+            inputStyle= {{color: theme.colors.text, fontFamily: 'Montserrat_400Regular'}}
           />
           <ErrorMessage errorValue= {touched.email && errors.email}/>
 
@@ -90,7 +89,8 @@ export default function Login({ navigation }) {
             title="Don't have an account? Sign Up"
             //onPress={() => router.navigate('Signup')}
             titleStyle={{
-              color: theme.colors.secondary
+              color: theme.colors.text,
+              fontFamily: 'Montserrat_400Regular'
             }}
             type="clear"
             />
@@ -99,7 +99,8 @@ export default function Login({ navigation }) {
             title="Continue as Guest"
             onPress={() => navigation.navigate('Questionnaire')}
             titleStyle={{
-              color: theme.colors.tertiary
+              color: theme.colors.tertiary,
+              fontFamily: 'Montserrat_400Regular',
             }}
             type="clear"
             />
@@ -118,12 +119,5 @@ export default function Login({ navigation }) {
     button: {
       margin: 8,
       alignItems: 'center',
-      // font: 
-      // {
-      //   fontSize: 20,
-      //   fontWeight: 'bold',
-
-      // },
-
     },
   })

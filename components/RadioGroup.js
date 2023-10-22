@@ -11,7 +11,7 @@ export default function RadioGroup({ options, selectedValue, onValueChange }) {
             marginLeft: 5,
         },
         title: {
-            fontWeight: 'bold',
+            fontFamily: 'Montserrat_400Regular',
             marginBottom: 10,
         },
         listItem: {
@@ -37,6 +37,7 @@ export default function RadioGroup({ options, selectedValue, onValueChange }) {
                             uncheckedIcon="circle-o"
                             checked={selectedValue === option.value}
                             onPress={() => onValueChange(option.value)}
+                            titleStyle={styles.title}
                         />
                     </ListItem>
                 ))}

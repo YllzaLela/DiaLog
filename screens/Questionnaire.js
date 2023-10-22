@@ -15,7 +15,7 @@ import {
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { theme } from "../config/theme";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { SafeAreaView, useSafeAreaInsets } from "react-native-safe-area-context";
 import { Fragment } from "react";
 import FormInput from "../components/FormInput";
 import ErrorMessage from "../components/ErrorMessage";
@@ -24,9 +24,6 @@ import RadioGroup from "../components/RadioGroup";
 import { Header } from "react-native-elements";
 import { CheckBox, Card, Text } from '@rneui/themed';
 import InputLabel from "../components/InputLabel";
-import { CommonActions } from "@react-navigation/routers";
-
-
 
 //Validation schema for our form
 const validationSchema = Yup.object().shape({
@@ -66,6 +63,7 @@ const validationSchema = Yup.object().shape({
 
 
 export default function Questionnaire({ navigation }) {
+  
   const insets= useSafeAreaInsets();
   
   const [name, setName] = useState('');
@@ -85,6 +83,8 @@ export default function Questionnaire({ navigation }) {
   }
   
   return (
+    console.log("Questionnaire"),
+    <SafeAreaView>
     <ScrollView style={[styles.container, {backgroundColor: theme.colors.background, flex: 1, paddingTop: insets.top}]}>
     <Formik
       initialValues={{ name: '', age:'', gender: '', weight:'', height:'', diagnosis: '', activityLevel: '', goal: '' }}
@@ -96,7 +96,7 @@ export default function Questionnaire({ navigation }) {
     <Fragment>
       {/*Full Name*/}
         <InputLabel>
-        Full Name
+        Name
         </InputLabel>
       <FormInput
         name="name"
@@ -220,10 +220,10 @@ export default function Questionnaire({ navigation }) {
         <FormButton
           onPress={handleSubmit}
           title="Continue"
-          titleColor={theme.colors.primary}
+          titleColor={theme.colors.tertiary}
           disabled={!isValid}
           backgroundColor={theme.colors.primary}
-          buttonColor={theme.colors.textContrast}
+          buttonColor={theme.colors.text}
         />
       </View>
 
@@ -234,13 +234,14 @@ export default function Questionnaire({ navigation }) {
           onPress={() => navigation.replace('Home')}
           title="Skip"
           backgroundColor={theme.colors.tertiary}
-          buttonColor={theme.colors.textContrast}/>
+          buttonColor={theme.colors.text}/>
 
       </View>
       </Fragment> 
         )}
       </Formik>
     </ScrollView>
+    </SafeAreaView>
   )
 }
 
@@ -251,7 +252,7 @@ container: {
 header: {
   fontSize: 24,                 
   fontWeight: 'bold',        
-  textAlign: 'Left',      
+  textAlign: 'left',      
   marginVertical: 20, 
   marginLeft: 25,       
   color: theme.colors.text,
