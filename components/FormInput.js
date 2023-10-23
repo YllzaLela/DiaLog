@@ -36,6 +36,9 @@ const styles = StyleSheet.create({
   },
   iconStyle: {
     marginRight: 10
+  },
+  input: {
+    fontFamily: 'Montserrat_400Regular',
   }
 })
 
