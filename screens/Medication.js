@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button } from 'react-native';
 //import { MedicationList } from '../components/MedicationList';
-import { NavigationContainer } from '@react-navigation/native';
 
-export function Medication({navigation}) {
+export function Medication() {
     const [medications, setMedications] = useState([]);
     const [name, setName] = useState('');
     const [dosage, setDosage] = useState('');

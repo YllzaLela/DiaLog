@@ -1,9 +1,8 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import theme from '../config/theme';
-import { NavigationContainer } from '@react-navigation/native';
 
-function Profile({navigation}) {
+function Profile() {
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Profile</Text>

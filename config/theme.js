@@ -1,5 +1,6 @@
 import { ThemeProvider, createTheme
 } from "@rneui/themed";
+import '@expo-google-fonts/montserrat'
 
 export const theme = createTheme({
     //I'm using only one color scheme: dark
@@ -39,7 +40,14 @@ export const theme = createTheme({
             medium: 16,
             large: 20,
             xlarge: 24,
-        }
+        },
+        title: {
+            fontSize: 24,
+            fontWeight: 'bold',
+            marginBottom: 20,
+            fontFamily: 'Montserrat_600SemiBold',
+
+        },
     },
 
     spacing: {
@@ -57,6 +65,10 @@ export const theme = createTheme({
             raised: true,
         },
     },
+    container: {
+        flex: 1,
+        padding: 20,
+     },
 });
 
 export default theme;

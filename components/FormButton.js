@@ -1,6 +1,5 @@
 import React from 'react';
 import { Button } from 'react-native-elements';
-import { useTheme } from '@rneui/themed';
 import { theme } from '../config/theme';
 
 const FormButton = ({ title, buttonType, buttonColor, backgroundColor, ...rest }) => (

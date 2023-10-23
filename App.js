@@ -4,12 +4,15 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Login from './screens/Login';
 import Questionnaire from './screens/Questionnaire';
+import Home from './screens/Home';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import theme from './config/theme';
 import { ThemeProvider } from '@rneui/themed';
 import * as Font from 'expo-font';
 import { Montserrat_400Regular, Montserrat_700Bold, Montserrat_600SemiBold } from '@expo-google-fonts/montserrat';
 import HomeDrawer from './components/HomeDrawer';
+import GlucoseLog from './screens/GlucoseLog';
+
 
 
 
@@ -60,6 +63,7 @@ export default function App() {
           headerShown: false,
         }}/>
       </Stack.Navigator>
+
 
       
       </ThemeProvider> 

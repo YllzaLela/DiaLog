@@ -9,8 +9,6 @@ import * as Yup from 'yup'
 import { Fragment } from 'react'
 import ErrorMessage from '../components/ErrorMessage'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
-import { Header } from '@rneui/themed'
-import Questionnaire from './Questionnaire'
 
 
 export default function Login({ navigation }) {

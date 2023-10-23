@@ -4,8 +4,9 @@ import Home from "../screens/Home";
 import Profile from "../screens/Profile";
 import Medication from "../screens/Medication";
 import { theme } from "../config/theme";
-import getGreeting from "./Greeting";
+import getGreeting from "../logic/Greeting";
 import { Ionicons } from '@expo/vector-icons';
+import GlucoseLog from "../screens/GlucoseLog";
 
 const Drawer = createDrawerNavigator();
 
@@ -43,6 +44,7 @@ export default function HomeDrawer() {
 
         <Drawer.Screen name="Profile" component={Profile} />
         <Drawer.Screen name="Medication" component={Medication} />
+        <Drawer.Screen name="Glucose Log" component={GlucoseLog} />
         </Drawer.Navigator>
     );
     }

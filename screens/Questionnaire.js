@@ -240,6 +240,7 @@ export default function Questionnaire({ navigation }) {
         )}
       </Formik>
     </ScrollView>
+  
   )
 }
 
