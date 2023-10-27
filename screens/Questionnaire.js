@@ -17,13 +17,13 @@ import * as Yup from "yup";
 import { theme } from "../config/theme";
 import { SafeAreaView, useSafeAreaInsets } from "react-native-safe-area-context";
 import { Fragment } from "react";
-import FormInput from "../components/FormInput";
-import ErrorMessage from "../components/ErrorMessage";
-import FormButton from "../components/FormButton";
-import RadioGroup from "../components/RadioGroup";
+import FormInput from "../components/Form/FormInput";
+import ErrorMessage from "../components/Form/ErrorMessage";
+import FormButton from "../components/Form/FormButton";
+import RadioGroup from "../components/Form/RadioGroup";
 import { Header } from "react-native-elements";
 import { CheckBox, Card, Text } from '@rneui/themed';
-import InputLabel from "../components/InputLabel";
+import InputLabel from "../components/Form/InputLabel";
 
 //Validation schema for our form
 const validationSchema = Yup.object().shape({

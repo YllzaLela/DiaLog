@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import { StyleSheet, SafeAreaView, View, Text, Pressable } from 'react-native'
 import { Button } from 'react-native-elements'
-import FormInput from '../components/FormInput'
-import FormButton from '../components/FormButton'
+import FormInput from '../components/Form/FormInput'
+import FormButton from '../components/Form/FormButton'
 import { theme } from '../config/theme'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
 import { Fragment } from 'react'
-import ErrorMessage from '../components/ErrorMessage'
+import ErrorMessage from '../components/Form/ErrorMessage'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 

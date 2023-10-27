@@ -1,49 +1,72 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import theme from '../config/theme';
+import React from "react";
+import { View, Text, StyleSheet } from "react-native";
+import theme from "../config/theme";
+import { Card } from "react-native-elements";
+import InputLabel from "../components/Form/InputLabel";
+import { Button } from "react-native-elements";
 
 function Profile() {
-    return (
-        <View style={styles.container}>
-            <Text style={styles.title}>Profile</Text>
-            <View style={styles.infoContainer}>
-                <Text style={styles.label}>Name:</Text>
-                <Text style={styles.info}>John Doe</Text>
-            </View>
-            <View style={styles.infoContainer}>
-                <Text style={styles.label}>Email:</Text>
-                <Text style={styles.info}>johndoe@example.com</Text>
-            </View>
-            <View style={styles.infoContainer}>
-                <Text style={styles.label}>Age:</Text>
-                <Text style={styles.info}>35</Text>
-            </View>
-        </View>
-    );
-};
+  return (
+    <View style={styles.container}>
+      <Card
+        containerStyle={{
+          borderRadius: 16,
+          backgroundColor: theme.colors.card,
+          borderColor: theme.colors.border,
+        }}
+      >
+        <InputLabel>Email:</InputLabel>
+        <InputLabel>Name:</InputLabel>
+        <InputLabel>Age:</InputLabel>
+        <InputLabel>Gender:</InputLabel>
+        <InputLabel>Weight:</InputLabel>
+        <InputLabel>Height:</InputLabel>
+        <InputLabel>Diagnosis:</InputLabel>
+        <InputLabel>Activity Level:</InputLabel>
+        <InputLabel>Goal:</InputLabel>
+      </Card>
+      <View style={styles.container}>
+      <Button
+        buttonStyle={styles.buttonStyle}
+        title="Edit Profile"
+        titleStyle={styles.buttonStyle.titleStyle}
+      />
+      <Button
+        buttonStyle={styles.logOutButton}
+        title="Log Out"
+        titleStyle={styles.buttonStyle.titleStyle}
+      />
+      </View>
+    </View>
+  );
+}
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        padding: 20,
-        backgroundColor: '#fff',
+  container: {
+    flex: 1,
+    padding: 20,
+    backgroundColor: theme.colors.background,
+    alignItems: "left",
+  },
+  buttonStyle: {
+    backgroundColor: theme.colors.primary,
+    borderRadius: 16,
+    paddingHorizontal: 10,
+    margin: 10,
+    alignSelf: "flex-start",
+    titleStyle: {
+      color: theme.colors.text,
+      fontFamily: "Montserrat_400Regular",
     },
-    title: {
-        fontSize: 24,
-        fontWeight: 'bold',
-        marginBottom: 20,
-    },
-    infoContainer: {
-        flexDirection: 'row',
-        marginBottom: 10,
-    },
-    label: {
-        fontWeight: 'bold',
-        marginRight: 10,
-    },
-    info: {
-        flex: 1,
-    },
+  },
+  logOutButton: 
+  {
+    backgroundColor: theme.colors.tertiary,
+    borderRadius: 16,
+    paddingHorizontal: 10,
+    margin: 10,
+    alignSelf: "flex-start",
+  },
 });
 
 export default Profile;
