@@ -1,11 +1,7 @@
-import initializeapp from 'firebase/app';
-import { getAnalytics } from "firebase/analytics";
-
-//Importing the services I will be using 
-import {getAuth} from "firebase/auth";
-import {getFirestore} from "firebase/firestore";
+import { initializeApp } from 'firebase/app';
+import { getAuth } from "firebase/auth";
+import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
 import { getStorage } from "firebase/storage";
-
 
 //initialize firebase
 const firebaseConfig = {
@@ -18,5 +14,9 @@ const firebaseConfig = {
     measurementId: "G-Z90135DKJW"
   };
 
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+  const auth = getAuth(app);
+  const storage = getStorage(app);
+  
+  export { app, db, auth, storage };

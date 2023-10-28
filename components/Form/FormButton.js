@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from 'react-native-elements';
-import { theme } from '../config/theme';
+import { theme } from '../../config/theme';
 
 const FormButton = ({ title, buttonType, buttonColor, backgroundColor, ...rest }) => (
     <Button

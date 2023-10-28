@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { ListItem, CheckBox, ThemeProvider } from 'react-native-elements';
-import theme from '../config/theme';
+import theme from '../../config/theme';
 import { color } from '@rneui/base';
 
-export default function RadioGroup({ options, selectedValue, onValueChange }) {
+export default function RadioGroup({ options, selectedValue, onValueChange, disabled }) {
 
     const styles = StyleSheet.create({
         container: {
@@ -38,6 +38,7 @@ export default function RadioGroup({ options, selectedValue, onValueChange }) {
                             checked={selectedValue === option.value}
                             onPress={() => onValueChange(option.value)}
                             titleStyle={styles.title}
+                            disabled={disabled}
                         />
                     </ListItem>
                 ))}

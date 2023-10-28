@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, StyleSheet } from 'react-native';
-import theme from '../config/theme';
+import theme from '../../config/theme';
 
 const InputLabel = ({ children, style }) => {
     return (
@@ -12,7 +12,7 @@ const InputLabel = ({ children, style }) => {
 
 const styles = StyleSheet.create({
     text: {
-        fontFamily: theme.fonts.bold,
+        fontFamily: theme.fonts.regular,
         fontSize: theme.fonts.sizes.medium,
         fontWeight: 'bold',
         textAlign: 'left',

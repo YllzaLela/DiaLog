@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import theme from '../config/theme';
+import theme from '../../config/theme';
 
 const ErrorMessage = ({ errorValue }) => (
     <View style={styles.container}>
