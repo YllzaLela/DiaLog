@@ -100,7 +100,7 @@ export default function Questionnaire({ navigation }) {
       <FormInput
         name="name"
         value={values.name}
-        color={theme.colors.primary}
+        color={theme.colors.text}
         placeholder="Enter Full Name"
         onChangeText={handleChange('name')}
         iconColor={theme.colors.tertiary}
@@ -133,6 +133,7 @@ export default function Questionnaire({ navigation }) {
             {label: 'Female', value:'female'},
           ]}
           selectedValue={values.gender}
+          disabled={false}
           onValueChange={handleChange('gender')}/> 
 
           <ErrorMessage errorValue={touched.gender && errors.gender}/>
@@ -182,6 +183,7 @@ export default function Questionnaire({ navigation }) {
           ]}
           value={values.diagnosis}
           selectedValue={values.diagnosis}
+          disabled={false}
           onValueChange={handleChange('diagnosis')}/>
           <ErrorMessage errorValue={touched.diagnosis && errors.diagnosis}/>
           
@@ -197,6 +199,7 @@ export default function Questionnaire({ navigation }) {
             {label: 'Extremely Active: Very hard exercise, physical job, or training twice a day.', value:'1.9'},
           ]}
           selectedValue={values.activityLevel}
+          disabled={false}
           onValueChange={handleChange('activityLevel')}/>
           <ErrorMessage errorValue={touched.activityLevel && errors.activityLevel}/>
 
@@ -211,6 +214,7 @@ export default function Questionnaire({ navigation }) {
           ]}
           value={values.goal}
           selectedValue={values.goal}
+          disabled={false}
           onValueChange={handleChange('goal')}/>
           <ErrorMessage errorValue={touched.goal && errors.goal}/>
 
