@@ -9,6 +9,7 @@ import * as Yup from 'yup'
 import { Fragment } from 'react'
 import ErrorMessage from '../components/Form/ErrorMessage'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
+import { auth } from '../firebaseConfig'
 
 
 export default function Login({ navigation }) {
@@ -16,15 +17,23 @@ export default function Login({ navigation }) {
     const insets= useSafeAreaInsets();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    
+    
+  
+        
 
-    const handleSubmit = (values, { navigation }) => {
-        if (values.email.length > 0 && values.password.length > 0) {
-          setTimeout(() => {
-            Alert.alert('Welcome back!');
-            navigation.navigate('App');
-          }, 3000);
-        }
-      };
+    const handleSubmit = (values, actions) => {
+      if (values.email.length > 0 && values.password.length > 0) {
+        signInWithEmailAndPassword(auth, values.email, values.password)
+          .then(() => {
+            navigation.navigate('Questionnaire');
+          })
+          .catch((error) => {
+            const errorMessage = error.message;
+            Alert.alert('Error', errorMessage);
+            actions.setSubmitting(false);
+          })
+      }};
 
       const validationSchema = Yup.object().shape({
         email: Yup.string()
@@ -76,7 +85,7 @@ export default function Login({ navigation }) {
         
         <View style={{margin: theme.spacing.medium}}>
             <FormButton
-              //onPress={handleSubmit}
+              onPress={handleSubmit}
               title="LOGIN"
               titleColor={theme.colors.primary}
               backgroundColor={theme.colors.primary}
