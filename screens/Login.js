@@ -10,6 +10,7 @@ import { Fragment } from 'react'
 import ErrorMessage from '../components/Form/ErrorMessage'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { auth } from '../firebaseConfig'
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 
 export default function Login({ navigation }) {
@@ -89,7 +90,7 @@ export default function Login({ navigation }) {
               title="LOGIN"
               titleColor={theme.colors.primary}
               backgroundColor={theme.colors.primary}
-              disabled={ !isValid || isSubmitting}
+              disabled={ !isValid }
             />
 
           <Button

@@ -5,37 +5,10 @@ import theme from "../config/theme";
 import { ScrollView } from "react-native-gesture-handler";
 import { Button } from "react-native-elements";
 import { useNavigation } from "@react-navigation/native";
-
+import userMedications from "../dummyData";
 const MedicationList = () => {
     const navigation = useNavigation();
     // Placeholder data for today's medication
-  const medicationData = [
-    {
-      id: 1,
-      name: "Metformin",
-      dosage: "500",
-      dosageUnit: "mg",
-      time: "8:00 AM",
-      notes: "Take before food",
-    },
-    {
-      id: 2,
-      name: "Insulin",
-      dosage: "10",
-      dosageUnit: "units",
-      time: "12:00 PM",
-      notes: "Take after food",
-    },
-    {
-      id: 3,
-      name: "Lisinopril",
-      dosage: "20",
-      dosageUnit: "mg",
-      time: "6:00 PM",
-      notes: "Take with food",
-    },
-  ];
-
   return (
     <ScrollView style={{marginTop: 20}}>
       <Text
@@ -48,14 +21,14 @@ const MedicationList = () => {
           }}>
         Todays Medication
       </Text>
-      {medicationData.map((medication) => (
+      {userMedications.map((medication) => (
         <MedicationCard
           key={medication.id}
           medicationName={medication.name}
           dosage={medication.dosage}
           dosageUnit={medication.dosageUnit}
           time={medication.time}
-          notes={medication.notes}
+          notes={medication.note}
         />
       ))}
 
@@ -80,18 +53,3 @@ const MedicationList = () => {
 };
 
 export default MedicationList;
-{/*
-<Button
-  backgroundColor={theme.colors.background}
-  buttonStyle={{
-    backgroundColor: theme.colors.primary,
-    borderRadius: 16,
-  }}
-  
-  onPress={() => navigation.navigate("Medication")}
-  title="Add Medication"
-  titleStyle={{
-    color: theme.colors.text,
-    fontFamily: "Montserrat_400Regular",
-  }}
-  /> */}
