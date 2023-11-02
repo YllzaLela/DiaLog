@@ -10,6 +10,8 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import { ScrollView } from "react-native-gesture-handler";
 import { dummyUser } from "../dummyData";
+import { auth } from "../firebaseConfig";
+import { signOut } from "firebase/auth";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -53,6 +55,16 @@ const validationSchema = Yup.object().shape({
     )
     .required("Please select one that describes you best"),
 });
+
+const handleSignOut = () => {
+  signOut(auth)
+    .then(() => {
+      console.log("Sign out successful");
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
 
 function Profile() {
   const [isEditable, setIsEditable] = React.useState(false);
@@ -257,6 +269,7 @@ function Profile() {
         <Button
           buttonStyle={styles.logOutButton}
           title="Log Out"
+          onPress={handleSignOut}
           titleStyle={styles.buttonStyle.titleStyle}
         />
       </View>

@@ -7,6 +7,7 @@ import { theme } from "../config/theme";
 import getGreeting from "../logic/Greeting";
 import { Ionicons } from '@expo/vector-icons';
 import GlucoseLog from "../screens/GlucoseLog";
+import Greeting from "../logic/Greeting";
 
 const Drawer = createDrawerNavigator();
 
@@ -39,7 +40,7 @@ export default function HomeDrawer() {
         >
         <Drawer.Screen name="Home" component={Home} options={{
             headerShown:true,
-            headerTitle: getGreeting(),
+            headerTitle: Greeting(),
         }}/>
 
         <Drawer.Screen name="Profile" component={Profile} />
