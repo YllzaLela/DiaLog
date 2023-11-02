@@ -6,8 +6,12 @@
  import { useState, useEffect } from 'react';
  import { db, auth } from '../firebaseConfig';
  import { collection, collectionGroup, doc, getDocs } from 'firebase/firestore';
+ import GlucoseRules from '../logic/GlucoseRules';
+ import { useNavigation } from '@react-navigation/native';
+
 
  const GlucoseChart = () => {
+    const navigation = useNavigation();
 
 //   const [glucoseReadings, setGlucoseReadings] = React.useState([]);
 //   const [timestamps, setTimestamps] = React.useState([]);
@@ -44,9 +48,9 @@
 //     }, []);
 
   const data = {
-      labels: ['12:00 AM', '3:00 AM', '6:00 AM', '9:00 AM', '12:00 PM', '3:00 PM', '6:00 PM', '9:00 PM'],
+      labels: ['8:00', '12:00', '14:00', '17:00', '19:00', '21:00', '23:00'], //timestamps
       datasets: [{ 
-          data: [ 100, 110, 120, 130, 140, 150, 160, 170,],
+          data: [ 100, 90, 150, 120, 110, 130, 160, 170, 150], //glucose logs
           strokeWidth: 3,
       }],
   };
@@ -89,6 +93,14 @@
                      borderRadius: 20, 
                  }}
              />
+                <Text style=
+                {{
+                    fontSize: 20,
+                    fontFamily: theme.fonts.bold,
+                    color: theme.colors.text,
+                    textAlign: 'left',
+                }}>{<GlucoseRules/>}</Text>
+
          <Button
           buttonStyle={{
              backgroundColor: theme.colors.primary,
