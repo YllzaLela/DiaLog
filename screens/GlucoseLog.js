@@ -11,6 +11,8 @@ import RadioGroup from "../components/Form/RadioGroup";
 import { Button } from "react-native-elements";
 import ErrorMessage from "../components/Form/ErrorMessage";
 import { Card } from "react-native-elements";
+import { db, auth } from "../firebaseConfig";
+import { addDoc, collection } from "firebase/firestore";
 
 const validationSchema = Yup.object().shape({
   //glucose
@@ -25,18 +27,41 @@ const validationSchema = Yup.object().shape({
   //tags
   tags: Yup.string()
     .oneOf(
-      ["Fasted", "Pre-Meal", "Post-Meal", "Bedtime"],
+      ["fasted", "pre-meal", "post-meal", "bedtime"],
       "Please select one that describes your situation best"
     )
     .required("Please select one that describes you best"),
 });
-const handleSubmit = (values) => {
-  // For now, we will simulate a save action with a timeout
-  // Later, this is where I'll add my database saving logic
-  setTimeout(() => {
-    alert("Glucose was successfully saved!");
-  }, 1000); // Simulating a 1 second save action
+
+const handleSubmit = async (values, formikBag) => {
+  try {
+    const user = auth.currentUser;
+    if (user) {
+      const glucoseLogRef = collection(db, "User", user.uid, "glucoseLog");
+
+      await addDoc(glucoseLogRef, {
+        glucose: values.glucose,
+        unit: values.unit,
+        notes: values.notes,
+        tags: values.tags,
+        timestamp: new Date(),
+      });
+
+      alert("Glucose was successfully saved!");
+      formikBag.resetForm();
+
+    } else {
+      alert("Please sign in to save your glucose reading.");
+    }
+  } catch (error) {
+    console.error("Error adding glucoseLog: ", error);
+    alert("An error occurred. Please try again.");
+  }
+
+  
+  
 };
+
 
 function GlucoseLog({ navigation }) {
   return (
@@ -47,7 +72,7 @@ function GlucoseLog({ navigation }) {
         notes: "",
         tags: "",
       }}
-      onSubmit={(values) => handleSubmit(values)}
+      onSubmit={(values, formikBag) => handleSubmit(values, formikBag)}
       validationSchema={validationSchema}
     >
       {({
@@ -78,12 +103,15 @@ function GlucoseLog({ navigation }) {
               keyboardType="numeric"
               inputStyle={{ color: theme.colors.text }}
             />
-            <ErrorMessage errorValue={touched.reading && errors.reading} />
+            <ErrorMessage errorValue={touched.glucose && errors.glucose} />
+
+
+
             <RadioGroup
               name="unit"
               options={[
                 { label: "mg/dL", value: "mg/dL" },
-                { label: "mmol/L", value: "mmol/L" },
+                //{ label: "mmol/L", value: "mmol/L" },
               ]}
               selectedValue={values.unit}
               onValueChange={handleChange("unit")}
@@ -100,7 +128,10 @@ function GlucoseLog({ navigation }) {
             />
             <ErrorMessage errorValue={touched.reading && errors.reading} />
 
+
+
             <InputLabel>Tags</InputLabel>
+
             <RadioGroup
               name="tags"
               options={[
@@ -110,8 +141,13 @@ function GlucoseLog({ navigation }) {
                 { label: "Bedtime", value: "bedtime" },
               ]}
               selectedValue={values.tags}
+              value={values.tags}
+              disabled={false}
               onValueChange={handleChange("tags")}
             />
+            <ErrorMessage errorValue={touched.tags && errors.tags} />
+
+
             <Button
               buttonStyle={styles.buttonStyle}
               title="Add Reading"

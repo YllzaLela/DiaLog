@@ -18,6 +18,7 @@ const styles = StyleSheet.create({
         textAlign: 'left',
         marginTop: 20,
         marginLeft: 20,
+        marginBottom: 20,
         color: theme.colors.text,
         },
 });

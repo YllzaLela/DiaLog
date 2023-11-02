@@ -19,7 +19,7 @@ export default function Home()
         <SafeAreaView style={{ flex: 1, backgroundColor: theme.colors.background}}>
         <ScrollView>
             {/* Glucose line chart */}
-            <GlucoseChart/>
+            <GlucoseChart/> 
 
 
             {/* Macro wheel chart */}

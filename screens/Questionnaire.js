@@ -24,6 +24,10 @@ import RadioGroup from "../components/Form/RadioGroup";
 import { Header } from "react-native-elements";
 import { CheckBox, Card, Text } from '@rneui/themed';
 import InputLabel from "../components/Form/InputLabel";
+import { db } from "../firebaseConfig";
+import { auth } from "../firebaseConfig";
+import { collection, addDoc, setDoc, doc } from "firebase/firestore";
+import { MacroCalculations } from "../logic/MacroCalculation"; 
 
 //Validation schema for our form
 const validationSchema = Yup.object().shape({
@@ -34,18 +38,24 @@ const validationSchema = Yup.object().shape({
   //age must be from 1 to 120
   age: Yup.number()
   .min(1, "Age must be greater than 0!")
-  .max(120, "Age must be less than 120!"),
+  .max(120, "Age must be less than 120!")
+  .positive
+  .integer,
   
   gender: Yup.string().required('Gender is required!'),
   
   //weight is in kg min 10 kg max 500 kg
   weight: Yup.number()
   .min(10, "Weight seems to low!")
-  .max(500, "Weight seems to high!"),
+  .max(500, "Weight seems to high!")
+  .positive
+  .integer,
 
   height: Yup.number()
   .min(10, "Height seems to low!")
-  .max(300, "Height seems to high!"),
+  .max(300, "Height seems to high!")
+  .positive
+  .integer,
   
   diagnosis: Yup.string()
   .oneOf (['Type 2 Diabetes', 'Pre-Diabetes', 'Other'], 'Please select one that describes you best')
@@ -66,27 +76,34 @@ export default function Questionnaire({ navigation }) {
   
   const insets= useSafeAreaInsets();
   
-  const [name, setName] = useState('');
-  const [age, setAge] = useState(0);
-  const [gender, setGender] = useState('');
-  const [weight, setWeight]= useState(0);
-  const [height, setHeight]= useState(0);
-  const [diagnosis, setDiagnosis]= useState(['Type 2 Diabetes', 'Pre-Diabetes', 'Other']);
-  const [activityLevel, setActivityLevel]= useState(['1.2',' 1.3', '1.5', '1.7', '1.9']);
-  const [goal, setGoal]= useState(['Lose', 'Gain', 'Maintain']);
-  
+  const userId = auth.currentUser?.uid;
+
   const handleSubmit = ( values ) => 
   {
-      setTimeout(() => {
-        navigation.navigate('Home');
-      }, 1000); 
+    const macros = MacroCalculations(values.age, values.gender, values.weight, values.height, values.activityLevel, values.goal);
+    values.macros = macros;
+    if (userId) {
+      try {
+        const userDocRef = doc(collection(db, "User"), userId);
+        setDoc(userDocRef, { ...values });
+        console.log("Document written with ID: ", userId);
+        setTimeout(() => {
+          navigation.navigate('Home');
+        }); 
+      } catch (e) {
+        console.error("Error adding document: ", e);
+      }
+    } else {
+      console.error("No authenticated user found!");
+    }
+
   }
   
   return (
    
     <ScrollView style={[styles.container, {backgroundColor: theme.colors.background, flex: 1, paddingTop: insets.top}]}>
     <Formik
-      initialValues={{ name: '', age:'', gender: '', weight:'', height:'', diagnosis: '', activityLevel: '', goal: '' }}
+      initialValues={{ name: '', age:0, gender: '', weight:0, height:0, diagnosis: '', activityLevel: 0, goal: '', macros: { calories: 0, protein: 0, fats: 0, carbs: 0 } }}
       onSubmit={values => handleSubmit(values)}
       validationSchema={validationSchema}
     > 
@@ -238,7 +255,6 @@ export default function Questionnaire({ navigation }) {
           title="Skip"
           backgroundColor={theme.colors.tertiary}
           buttonColor={theme.colors.text}/>
-
       </View>
       </Fragment> 
         )}

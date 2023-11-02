@@ -3,3 +3,6 @@
     //if person pre-diabetic thresholds for pre-diabetics
     //if person neither, then thresholds for non-diabetics
     //if personal details == null, thresholds for general public + no warnings
+function glucoseRules(reading, diagnosis) {
+    
+}

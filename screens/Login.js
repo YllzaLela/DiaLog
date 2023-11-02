@@ -10,31 +10,38 @@ import { Fragment } from 'react'
 import ErrorMessage from '../components/Form/ErrorMessage'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { auth } from '../firebaseConfig'
-import { signInWithEmailAndPassword } from "firebase/auth";
-
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
 
 export default function Login({ navigation }) {
 
     const insets= useSafeAreaInsets();
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    
-    
-  
-        
 
-    const handleSubmit = (values, actions) => {
+    
+    
+    const handleSubmit = (values, { navigation }) => {
       if (values.email.length > 0 && values.password.length > 0) {
         signInWithEmailAndPassword(auth, values.email, values.password)
-          .then(() => {
-            navigation.navigate('Questionnaire');
-          })
-          .catch((error) => {
-            const errorMessage = error.message;
-            Alert.alert('Error', errorMessage);
-            actions.setSubmitting(false);
-          })
+        .then((userCredential) => {
+          const user = userCredential.user;
+          navigation.navigate('Home');
+        })
+        .catch((error) => {
+          console.log(error);
+        })
       }};
+      
+      const handleSignUp = (values) => {
+        if (values.email.length > 0  && values.password.length > 0) {
+        createUserWithEmailAndPassword(auth, values.email, values.password)
+        .then((userCredential) => {
+          const user= userCredential.user;
+          navigation.navigate('Questionnaire');
+        })
+        .catch((error) => {
+          console.log(error);
+        })
+      }};
+
 
       const validationSchema = Yup.object().shape({
         email: Yup.string()
@@ -94,8 +101,8 @@ export default function Login({ navigation }) {
             />
 
           <Button
-            title="Don't have an account? Sign Up"
-            //onPress={() => router.navigate('Signup')}
+            title="Create Account"
+            onPress={() => handleSignUp(values)}
             titleStyle={{
               color: theme.colors.text,
               fontFamily: 'Montserrat_400Regular'
