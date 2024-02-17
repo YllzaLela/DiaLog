@@ -13,7 +13,7 @@ It has features such as glucose logging, ML-driven alerts, macro recommendations
 
 ### **Where the project is at the moment and where we're heading:**
 At this point, the UI/UX of the project is completed. After some feedback from mentors, it is decided on removing one of the features and making the remaining as good as they can possibly be. 
-  The app is currently using a rule-based system for alerting alarming glucose trends. Soon, after thourough research on which algorithm is best to use, a ML algorithm will be implemented such as a Decision Tree or Logistic Regression for diabetes prediciton in people who have not yet been diagnosed or people with pre-diabetes.
+  The app is currently using a rule-based system for alerting alarming glucose trends. Soon, after thorough research on which algorithm is best to use, a ML algorithm will be implemented such as a Decision Tree or Logistic Regression for diabetes prediction in people who have not yet been diagnosed or people with pre-diabetes.
 
 
 ## **What the app looks like**
