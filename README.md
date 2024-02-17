@@ -16,8 +16,10 @@ At this point, the UI/UX of the project is completed. After some feedback from m
   The app is currently using a rule-based system for alerting alarming glucose trends. Soon, after thourough research on which algorithm is best to use, a ML algorithm will be implemented such as a Decision Tree or Logistic Regression for diabetes prediciton in people who have not yet been diagnosed or people with pre-diabetes.
 
 
-### **What the app looks like**
+## **What the app looks like**
 
+#### Login Page
+![Screenshot of the login page](/App Screenshots/login_screen.jpg
 
 
   
