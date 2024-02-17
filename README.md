@@ -19,7 +19,7 @@ At this point, the UI/UX of the project is completed. After some feedback from m
 ## **What the app looks like**
 
 #### Login Page
-![Screenshot of the login page](DiaLog/App Screenshots/login_screen.jpg)
+![Screenshot of the login page](App Screenshots/login_screen.jpg)
 
 
   
