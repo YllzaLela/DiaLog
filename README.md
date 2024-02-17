@@ -18,8 +18,31 @@ At this point, the UI/UX of the project is completed. After some feedback from m
 
 ## **What the app looks like**
 
-#### Login Page
-![Screenshot of the login page](App Screenshots/login_screen.jpg)
+### Login Page
+<p align="center">
+   <img src="https://github.com/YllzaLela/DiaLog/assets/86922461/2365c3dd-c9ad-449c-91be-4f99de6860be" alt="Login Page" width="300">
+   <img src="https://github.com/YllzaLela/DiaLog/assets/86922461/25a4e78f-4752-4ec6-afc5-11f91c445837" alt="Login Validation" width="300">
+</p>
+ 
 
 
-  
+### Home Page
+<p align="center">
+  <img src="https://github.com/YllzaLela/DiaLog/assets/86922461/ed419c13-3c99-44b3-a0bd-638c1fbfa625" alt="Home Page" width="300">
+</p>
+
+
+### Questionnaire Page
+<p align="center">
+  <img src="https://github.com/YllzaLela/DiaLog/assets/86922461/fe5e543d-10a0-431d-8203-5b34df5e79ac" alt="Questionnaire 
+   Page" width="300">
+</p>
+
+### Glucose Log
+<p align="center">
+  <img src="https://github.com/YllzaLela/DiaLog/assets/86922461/532796d2-73fe-4b7d-b33c-7c6479a794bc" alt="Glucose Log Page" 
+  width="300">
+</p>
+
+
+
